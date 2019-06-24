@@ -1,13 +1,140 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	padding: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+		'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+		'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	background-color: #f5f5f5;
+	color: #364f6b;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.App {
+	display: grid;
+	grid-template-columns: 1.5fr 4.5fr;
+}
+
+.PlayerStats {
+	border-right: #364f6b 2px solid;
+	/* text-align: right; */
+	padding: 1rem;
+	margin-top: 1rem;
+}
+
+.PlayerCreation {
+	padding: 1rem;
+}
+
+#imagePreview {
+	margin-top: 1rem;
+}
+
+.submit {
+	padding: 1rem;
+	width: 9rem;
+	margin-top: 1rem;
+	border: 2px solid #364f6b;
+	text-align: center;
+	cursor: pointer;
+	transition: 0.4s;
+}
+
+.submit:hover {
+	background-color: #364f6b;
+	color: #f5f5f5;
+}
+
+select {
+	padding: 0.8rem;
+	color: #364f6b;
+	font-size: 1rem;
+	width: 11rem;
+	border: none;
+}
+
+input {
+	padding: 1rem;
+}
+
+.World {
+	display: grid;
+	height: 0px;
+	width: 0px;
+	padding: 1rem;
+	grid-template-areas:
+		'r0c0 r0c1 r0c2 r0c3 r0c4 r0c5 r0c6 r0c7 r0c8'
+		'r1c0 r1c1 r1c2 r1c3 r1c4 r1c5 r1c6 r1c7 r1c8'
+		'r2c0 r2c1 r2c2 r2c3 r2c4 r2c5 r2c6 r2c7 r2c8'
+		'r3c0 r3c1 r3c2 r3c3 r3c4 r3c5 r3c6 r3c7 r3c8'
+		'r4c0 r4c1 r4c2 r4c3 r4c4 r4c5 r4c6 r4c7 r4c8'
+		'r5c0 r5c1 r5c2 r5c3 r5c4 r5c5 r5c6 r5c7 r5c8';
+}
+
+.FightScreen {
+	padding: 1rem;
+}
+
+.PlayerMoves {
+	grid-column: 2;
+	display: grid;
+	grid-template-areas:
+		'header1 header2'
+		'move1 move2'
+		'move3 move4';
+	text-align: center;
+	width: 90%;
+}
+
+.fightHeader {
+	grid-area: 'heading';
+}
+
+.playerMove {
+	transition: 0.4s;
+}
+
+.playerMove:hover {
+	background-color: #364f6b;
+	color: #f5f5f5;
+}
+
+.playerMoveHeader {
+	grid-column: span 2;
+}
+
+.hpOuter,
+.hpOuterEnemy {
+	border: solid 2px #364f6b;
+	width: 20rem;
+	color: white;
+	z-index: -1;
+}
+
+.hpInner {
+	background-color: #364f6b;
+	color: #364f6b;
+}
+
+.hpInnerEnemy {
+	background-color: red;
+	color: red;
+}
+
+.logo {
+	width: 21rem;
+	height: 21rem;
+}
+
+.flex {
+	display: flex;
+}
+
+.vs {
+	margin-left: 15rem;
+}
+
+.Enemy {
+	margin-left: 15rem;
 }
