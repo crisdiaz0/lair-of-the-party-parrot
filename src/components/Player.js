@@ -8,14 +8,14 @@ class Player extends React.Component {
 	}
 
 	render() {
-		const { Player, playerPos } = this.props;
+		const { Player } = this.props;
 		return (
 			<img
 				src={Player.icon}
 				className="Player"
 				alt="Player"
 				style={{
-					gridArea: `r${playerPos.r}c${playerPos.c}`,
+					gridArea: `r${Player.playerPos.r}c${Player.playerPos.c}`,
 					width: '100px',
 					height: '100px'
 				}}
@@ -25,7 +25,7 @@ class Player extends React.Component {
 }
 
 const mapStateToProps = state => ({
-	Player: state.Player
+	Player: state.playerReducer.Player
 });
 
 const mapDispatchToPtops = dispatch => ({});

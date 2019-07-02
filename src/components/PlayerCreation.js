@@ -28,13 +28,15 @@ class PlayerCreation extends React.Component {
 	render() {
 		return (
 			<div className="PlayerCreation">
-				<h2>Enter Player Name</h2>
+				<h2>Enter Your Parrot's Name</h2>
+
 				<input
 					onChange={e => this.handleChange(e, 'name')}
 					type="text"
-					placeholder="Player Name"
+					placeholder="Parrot Name"
 				/>
 				<br />
+
 				<img
 					id="imagePreview"
 					src={
@@ -47,11 +49,11 @@ class PlayerCreation extends React.Component {
 					alt=""
 				/>
 
-				<h2>Choose your Starter!</h2>
+				<h2>Choose your Parrot!</h2>
 
 				<select onChange={e => this.handleChange(e, 'type')}>
 					<option value="" hidden>
-						Select a type
+						Select a Parrot
 					</option>
 
 					{this.props.icons.map(icon => (

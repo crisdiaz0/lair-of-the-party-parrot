@@ -3,35 +3,53 @@ import PlayerStats from './components/PlayerStats';
 import PlayerCreation from './components/PlayerCreation';
 import World from './components/World';
 import FightScreen from './components/FightScreen';
-import PlayerMoves from './components/PlayerMoves';
+import PlayerUpgrade from './components/PlayerUpgrade';
+import Parrot from './components/Parrot';
 import { connect } from 'react-redux';
 
-const App = ({ Player, enemyEncountered, playerDefeated }) => (
-	<div className="App">
-		<PlayerStats />
+class App extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {};
+	}
 
-		{Player.name === '' ? (
-			<PlayerCreation />
-		) : playerDefeated ? (
-			<h1>Game Over</h1>
-		) : enemyEncountered ? (
-			<>
-				<FightScreen />
-				<PlayerMoves />
-			</>
-		) : (
-			<World />
-		)}
-	</div>
-);
+	returnCurrentScreen = () => {
+		const {
+			Player,
+			enemyEncountered,
+			playerDefeated,
+			playerUpgradingMoves
+		} = this.props;
+
+		if (Player.name === '') return <PlayerCreation />;
+		else if (playerDefeated)
+			return (
+				<div className="gameOver">
+					<h1 className="gameOverText">Game Over!</h1>
+					<Parrot />
+				</div>
+			);
+		else if (enemyEncountered) return <FightScreen />;
+		else if (playerUpgradingMoves) return <PlayerUpgrade />;
+		else return <World />;
+	};
+
+	render() {
+		return (
+			<div className="App">
+				<PlayerStats />
+
+				{this.returnCurrentScreen()}
+			</div>
+		);
+	}
+}
 
 const mapStateToProps = state => ({
 	Player: state.playerReducer.Player,
-	enemyEncountered: state.enemyReducer.enemyEncountered,
-	playerDefeated: state.playerReducer.playerDefeated
+	enemyEncountered: state.gameReducer.enemyEncountered,
+	playerDefeated: state.gameReducer.playerDefeated,
+	playerUpgradingMoves: state.gameReducer.playerUpgradingMoves
 });
 
-export default connect(
-	mapStateToProps,
-	null
-)(App);
+export default connect(mapStateToProps)(App);

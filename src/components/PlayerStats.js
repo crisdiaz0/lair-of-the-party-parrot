@@ -1,5 +1,6 @@
 import React from 'react';
-import Logo from '../Icons/logo.png';
+import Logo from '../Assets/logo.png';
+import HealthBar from './HealthBar';
 import { connect } from 'react-redux';
 
 const PlayerStats = ({ Player }) => (
@@ -9,20 +10,19 @@ const PlayerStats = ({ Player }) => (
 		) : (
 			<>
 				<img src={Player.icon} alt={Player.type} />
-				<h1>{Player.name}</h1>
+				<h1>{`${Player.name}, the ${Player.type} `}</h1>
 
-				<h2>{Player.type}</h2>
 				<h2>{`Level: ${Player.Lvl}`}</h2>
-				<div className="hpOuter">
-					<div className="hpInner" style={{ width: `${Player.HP}%` }}>
-						.
-					</div>
-				</div>
-				<h2>{`HP: ${Player.HP} / 100`}</h2>
 
-				<h2>{`XP: ${Player.XP}`}</h2>
+				<HealthBar
+					addClass="Player"
+					currentHP={Player.HP}
+					baseHP={Player.baseHP}
+				/>
+
 				<h2>{`Moves Made: ${Player.movesMade}`}</h2>
 				<h2>{`Enemies Defeated: ${Player.enemiesDefeated}`}</h2>
+				<h2>{`Score: ${Player.score}`}</h2>
 			</>
 		)}
 	</div>

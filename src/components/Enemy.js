@@ -1,4 +1,5 @@
 import React from 'react';
+import HealthBar from './HealthBar';
 import { connect } from 'react-redux';
 
 const Enemy = ({ enemyObj }) => (
@@ -8,13 +9,12 @@ const Enemy = ({ enemyObj }) => (
 			style={{ width: '100px', height: '100px' }}
 			alt="Enemy"
 		/>
-		<div className="hpOuterEnemy">
-			<div className="hpInnerEnemy" style={{ width: `${enemyObj.HP}%` }}>
-				.
-			</div>
-		</div>
 
-		<h2>{`Enemy HP: ${enemyObj.HP} / 100`}</h2>
+		<HealthBar
+			addClass="EnemyHP"
+			currentHP={enemyObj.HP}
+			baseHP={enemyObj.baseHP}
+		/>
 	</div>
 );
 

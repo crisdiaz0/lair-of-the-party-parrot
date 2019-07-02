@@ -1,35 +1,41 @@
 import React from 'react';
-import Tile from '../Icons/textureStone.png';
-import { connect } from 'react-redux';
+import Tile from '../Assets/floor.png';
+import VisitedTile from '../Assets/floorVisited.png';
+import Obstacle from '../Assets/spikes.png';
+import Food from '../Assets/Bread.png';
 
-class Cell extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {};
-	}
+const Cell = ({ cellObj }) => (
+	<>
+		<img
+			src={cellObj.hasBeenVisited ? VisitedTile : Tile}
+			alt=""
+			style={{
+				gridArea: cellObj.cell,
+				zIndex: -2,
+				width: '100px',
+				height: '100px'
+			}}
+		/>
 
-	render() {
-		const { cell, hasEnemy } = this.props;
-		return (
-			<img
-				src={hasEnemy === 'true' ? '' : Tile}
-				alt=""
-				style={{
-					gridArea: cell,
-					zIndex: -1,
-					width: '100px',
-					height: '100px'
-				}}
-			/>
-		);
-	}
-}
+		<img
+			src={
+				cellObj.hasFood
+					? Food
+					: cellObj.hasObstacle
+					? Obstacle
+					: cellObj.hasBeenVisited
+					? VisitedTile
+					: Tile
+			}
+			alt=""
+			style={{
+				gridArea: cellObj.cell,
+				zIndex: -1,
+				width: '100px',
+				height: '100px'
+			}}
+		/>
+	</>
+);
 
-const mapStateToProps = state => ({});
-
-const mapDispatchToProps = dispatch => ({});
-
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(Cell);
+export default Cell;
